@@ -5241,7 +5241,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
 
               if (tooltip) {
                 tooltip.remove();
-                
+
                 tooltip = null;
                 if (adjustmentTimeout) {
                   $timeout.cancel(adjustmentTimeout);
@@ -5249,7 +5249,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
               }
 
               openedTooltips.remove(ttScope);
-              
+
               if (tooltipLinkedScope) {
                 tooltipLinkedScope.$destroy();
                 tooltipLinkedScope = null;
@@ -6135,7 +6135,7 @@ angular.module('ui.bootstrap.timepicker', [])
   templateUrl: 'uib/template/timepicker/timepicker.html'
 })
 
-.controller('UibTimepickerController', ['$scope', '$element', '$attrs', '$parse', '$log', '$locale', 'uibTimepickerConfig', function($scope, $element, $attrs, $parse, $log, $locale, timepickerConfig) {
+.controller('UibTimepickerController', ['$scope', '$document', '$element', '$attrs', '$parse', '$log', '$locale', 'uibTimepickerConfig', function($scope, $document, $element, $attrs, $parse, $log, $locale, timepickerConfig) {
   var hoursModelCtrl, minutesModelCtrl, secondsModelCtrl;
   var selected = new Date(),
     watchers = [],
@@ -6469,6 +6469,9 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidHours && $scope.hours < 10) {
         $scope.$apply(function() {
           $scope.hours = pad($scope.hours, !padHours);
+          if ($document[0].documentMode) {
+            $scope.updateHours();
+          }
         });
       }
     });
@@ -6501,6 +6504,9 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidMinutes && $scope.minutes < 10) {
         $scope.$apply(function() {
           $scope.minutes = pad($scope.minutes);
+          if ($document[0].documentMode) {
+            $scope.updateMinutes();
+          }
         });
       }
     });
@@ -6524,6 +6530,9 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidSeconds && $scope.seconds < 10) {
         $scope.$apply( function() {
           $scope.seconds = pad($scope.seconds);
+          if ($document[0].documentMode) {
+            $scope.updateSeconds();
+          }
         });
       }
     });
