@@ -2,7 +2,7 @@
     "author": {
         "name": "https://github.com/angular-ui/bootstrap/graphs/contributors"
     },
-    "name": "angular-bootstrap",
+    "name": "angular-bootstrap-yoon",
     "keywords": [
         "angular",
         "angular-ui",
@@ -11,7 +11,7 @@
     "license": "MIT",
     "ignore": [],
     "description": "Native AngularJS (Angular) directives for Bootstrap.",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "main": ["./ui-bootstrap-tpls.js"],
     "dependencies": {
         "angular": ">=1.4.0"
