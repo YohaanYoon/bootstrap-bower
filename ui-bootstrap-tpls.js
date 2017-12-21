@@ -6469,16 +6469,11 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidHours && $scope.hours < 10) {
         $scope.$apply(function() {
           $scope.hours = pad($scope.hours, !padHours);
-          if ($document[0].documentMode) {
-            $scope.updateHours();
-          }
         });
-      } else if (!$scope.invalidHours) {
-        $scope.$apply(function() {
-          if ($document[0].documentMode) {
-            $scope.updateHours();
-          }
-        });
+      }
+
+      if ($scope.hours !== null && $document[0].documentMode) {
+        $scope.updateHours();
       }
     });
 
@@ -6510,16 +6505,11 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidMinutes && $scope.minutes < 10) {
         $scope.$apply(function() {
           $scope.minutes = pad($scope.minutes);
-          if ($document[0].documentMode) {
-            $scope.updateMinutes();
-          }
         });
-      } else if (!$scope.invalidMinutes) {
-        $scope.$apply(function() {
-          if ($document[0].documentMode) {
-            $scope.updateMinutes();
-          }
-        });
+      }
+
+      if ($scope.minutes !== null && $document[0].documentMode) {
+        $scope.updateMinutes();
       }
     });
 
@@ -6542,16 +6532,11 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidSeconds && $scope.seconds < 10) {
         $scope.$apply( function() {
           $scope.seconds = pad($scope.seconds);
-          if ($document[0].documentMode) {
-            $scope.updateSeconds();
-          }
         });
-      } else if (!$scope.invalidSeconds) {
-        $scope.$apply(function() {
-          if ($document[0].documentMode) {
-            $scope.updateSeconds();
-          }
-        });
+      }
+
+      if ($document[0].documentMode) {
+        $scope.updateSeconds();
       }
     });
 
