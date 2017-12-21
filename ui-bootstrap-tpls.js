@@ -6473,6 +6473,12 @@ angular.module('ui.bootstrap.timepicker', [])
             $scope.updateHours();
           }
         });
+      } else if (!$scope.invalidHours) {
+        $scope.$apply(function() {
+          if ($document[0].documentMode) {
+            $scope.updateHours();
+          }
+        });
       }
     });
 
@@ -6508,6 +6514,12 @@ angular.module('ui.bootstrap.timepicker', [])
             $scope.updateMinutes();
           }
         });
+      } else if (!$scope.invalidMinutes) {
+        $scope.$apply(function() {
+          if ($document[0].documentMode) {
+            $scope.updateMinutes();
+          }
+        });
       }
     });
 
@@ -6530,6 +6542,12 @@ angular.module('ui.bootstrap.timepicker', [])
       } else if (!$scope.invalidSeconds && $scope.seconds < 10) {
         $scope.$apply( function() {
           $scope.seconds = pad($scope.seconds);
+          if ($document[0].documentMode) {
+            $scope.updateSeconds();
+          }
+        });
+      } else if (!$scope.invalidSeconds) {
+        $scope.$apply(function() {
           if ($document[0].documentMode) {
             $scope.updateSeconds();
           }
